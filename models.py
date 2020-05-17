@@ -66,6 +66,18 @@ class ClientManager:
         return User(id,firstname,lastname,username,password)
 
     @staticmethod
+    def GetAllUsers(username,lbAllUsers):
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.connect((HOST, PORT))
+        sock.send(str.encode("ALLUSERS:-:" + username))
+        data = sock.recv(8096).decode()
+        sock.close()
+        request, response = data.split(":-:")
+        for user in list(map(lambda x: x.split(":")[1] + " " +
+                                       x.split(":")[2] + " - " + x.split(":")[3], response.split(":*:"))):
+            lbAllUsers.insert(lbAllUsers.size(), user)
+
+    @staticmethod
     def GetOnlineClient(lbOnlineUsers):
         while SOCK_LISTEN:
             global SOCK_LOGIN

@@ -188,14 +188,52 @@ def FormUser():
 
     user = ClientManager.ClientGetData(LOGIN_USER_USERNAME)
 
-    lblUsername = Label(root, text="USER:" + user.firstname + " " + user.lastname, font=("Times", "15"))
-    lblUsername.pack(anchor=W, pady=10, padx=10)
+    lblUsername = Label(root, text="USER: " + user.firstname + " " + user.lastname, font=("Times", "15"))
+    lblUsername.pack(anchor=W, pady=10, padx=20)
 
     btnLogout = Button(root,text="LOGOUT", command=lambda: LogoutUser(root))
-    btnLogout.pack(anchor=W, padx=10)
+    btnLogout.pack(anchor=W, padx=20)
 
-    lbOnlineUsers = Listbox(root, selectmode=SINGLE, width=30,height=10)
-    lbOnlineUsers.pack(pady=20)
+    frameUsers = Frame(root)
+    frameUsers.pack(pady=10,padx=20, fill=BOTH)
+
+    frameOnlineUsers = Frame(frameUsers)
+    frameOnlineUsers.pack(anchor=W, side=LEFT)
+    lblOnlineUsers = Label(frameOnlineUsers, text="Online users:")
+    lblOnlineUsers.pack(anchor=W)
+    lbOnlineUsers = Listbox(frameOnlineUsers, selectmode=SINGLE, width=35,height=7)
+    lbOnlineUsers.pack(side=LEFT)
+    scrollbarOnline = Scrollbar(frameOnlineUsers, orient="vertical", command=lbOnlineUsers.yview)
+    scrollbarOnline.pack(side="right", fill="y")
+    lbOnlineUsers.config(yscrollcommand=scrollbarOnline.set)
+
+    frameAllUsers = Frame(frameUsers)
+    frameAllUsers.pack(anchor=E)
+    lblAllUsers = Label(frameAllUsers, text="All users:")
+    lblAllUsers.pack(anchor=W)
+    lbAllUsers = Listbox(frameAllUsers, selectmode=SINGLE, width=35, height=7)
+    lbAllUsers.pack(side=LEFT)
+    ClientManager.GetAllUsers(LOGIN_USER_USERNAME,lbAllUsers)
+    scrollbarAll = Scrollbar(frameAllUsers, orient="vertical", command=lbAllUsers.yview)
+    scrollbarAll.pack(side="right", fill="y")
+    lbAllUsers.config(yscrollcommand=scrollbarAll.set)
+
+    frameChat = Frame(root)
+    frameChat.pack(pady=10)
+
+    lblMessages = Label(frameChat,text="Messages:")
+    lblMessages.pack(anchor=W)
+
+    lbMessages = Listbox(frameChat, selectmode=NONE, width=50, height=17)
+    lbMessages.pack()
+
+    frameSendMessage = Frame(frameChat)
+    frameSendMessage.pack(fill=BOTH)
+    txtMessage = Entry(frameSendMessage, width=43)
+    txtMessage.pack(side=LEFT,ipady=3)
+
+    btnSendMessage = Button(frameSendMessage,text="send")
+    btnSendMessage.pack(ipady=1,padx=0)
 
     threading.Thread(target=ClientManager.GetOnlineClient,args=(lbOnlineUsers,)).start()
 

@@ -110,6 +110,21 @@ def RequestHandling(conn,data):
         except:
             print("Error: unable to fecth data")
         db.close()
+    elif request == "ALLUSERS":
+        username = data
+        db = workDB.Connect()
+        cursor = db.cursor()
+        query = 'SELECT * FROM User WHERE username!="' + username + '"'
+        try:
+            cursor.execute(query)
+            result = cursor.fetchall()
+            allusers = ''
+            for res in result:
+                allusers += reduce(lambda i, j: str(i) + ":" + str(j), res[0: 4]) + ":*:"
+            conn.send(str.encode("ALLUSERS:-:" + allusers[0:allusers.__len__()-3]))
+        except:
+            print("Error: unable to fecth data")
+        db.close()
     print(clients.__len__())
     print(clients)
 
