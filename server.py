@@ -3,6 +3,7 @@ import socket
 import threading
 from models import WorkDatabase
 import os
+from functools import reduce
 
 
 clients = {}
@@ -23,35 +24,47 @@ def RequestHandling(conn,data):
         query = 'SELECT * FROM User'
         try:
             cursor.execute(query)
-            result = cursor.fetchall()
-            if username in clients.keys():
-                file = open("logs/login_log.txt", "a")
-                file.write("Username: " + username + ":-:Date and time: " + str(time.ctime(time.time())) + ":-:Response: User already connect\n")
-                file.flush()
-                file.close()
-                conn.send(str.encode("LOGIN:-:EXIST"))
-            elif list(filter(lambda x: x[3] == username and x[4] == password, result)).__len__() == 1:
-                clients[username] = conn
-                file = open("logs/login_log.txt", "a")
-                file.write("Username: " + username + ":-:Date and time: " + str(time.ctime(time.time())) + ":-:Response: Success connect\n")
-                file.flush()
-                file.close()
-                conn.send(str.encode("LOGIN:-:SUCCESS"))
-            else:
-                file = open("logs/login_log.txt", "a")
-                file.write("Username: " + username + ":-:Date and time: " + str(time.ctime(time.time())) + ":-:Response: Error connect\n")
-                file.flush()
-                file.close()
-                conn.send(str.encode("LOGIN:-:ERROR"))
-                conn.close()
+            result = list(map(list, cursor.fetchall()))
         except:
             print("Error: unable to fecth data")
         db.close()
+        if username in clients.keys():
+            file = open("logs/login_log.txt", "a")
+            file.write("Username: " + username + ":-:Date and time: " + str(time.ctime(time.time())) + ":-:Response: User already connect\n")
+            file.flush()
+            file.close()
+            conn.send(str.encode("LOGIN:-:EXIST"))
+            conn.close()
+        elif list(filter(lambda x: x[3] == username and x[4] == password, result)).__len__() == 1:
+            clients[username] = conn
+            file = open("logs/login_log.txt", "a")
+            file.write("Username: " + username + ":-:Date and time: " + str(time.ctime(time.time())) + ":-:Response: Success connect\n")
+            file.flush()
+            file.close()
+            onlineUsers = ''
+            newonline = ''
+            for res in result:
+                if res[3] in clients.keys() and res[3] != username:
+                    onlineUsers += reduce(lambda i, j: str(i) + ":" + str(j), res[0: 4])+ ":*:"
+                if res[3] == username:
+                    newonline = reduce(lambda i, j: str(i) + ":" + str(j), res[0: 4])
+            conn.send(str.encode("LOGIN:-:SUCCESS"))
+            clients[username].send(str.encode("ONLINE:-:" + onlineUsers[0:onlineUsers.__len__()-3]))
+            for key in clients:
+                if key != username:
+                    clients[key].send(str.encode("NEWONLINE:-:" + newonline))
+        else:
+            file = open("logs/login_log.txt", "a")
+            file.write("Username: " + username + ":-:Date and time: " + str(time.ctime(time.time())) + ":-:Response: Error connect\n")
+            file.flush()
+            file.close()
+            conn.send(str.encode("LOGIN:-:ERROR"))
+            conn.close()
     elif request == "REGISTER":
         firstname,lastname,username,password = data.split(":")
         db = workDB.Connect()
         cursor = db.cursor()
-        query = 'SELECT * FROM User WHERE username="' + username + '"';
+        query = 'SELECT * FROM User WHERE username="' + username + '"'
         try:
             cursor.execute(query)
             result = cursor.fetchall()
@@ -68,6 +81,19 @@ def RequestHandling(conn,data):
         conn.close()
     elif request == "LOGOUT":
         username = data
+        db = workDB.Connect()
+        cursor = db.cursor()
+        query = 'SELECT * FROM User WHERE username="' + username + '"'
+        try:
+            cursor.execute(query)
+            result = cursor.fetchone()
+            logoutuser = reduce(lambda i, j: str(i) + ":" + str(j), result[0: 4])
+        except:
+            print("Error: unable to fecth data")
+        db.close()
+        for key in clients:
+            if key != username:
+                clients[key].send(str.encode("LOGOUTUSER:-:" + logoutuser))
         del clients[username]
         conn.send(str.encode("LOGOUT:-:SUCCESS"))
         conn.close()
@@ -79,9 +105,8 @@ def RequestHandling(conn,data):
         try:
             cursor.execute(query)
             result = cursor.fetchone()
-            print(result[2])
-            conn.send(str.encode("GETDATA:-:" + str(result[0]) + ":" + result[1] + ":" + result[2] + ":" +
-                                 result[3] + ":" + result[4]))
+            resultReduce = reduce(lambda i, j: str(i) + ":" + str(j), result[0: 5])
+            conn.send(str.encode("GETDATA:-:" + resultReduce))
         except:
             print("Error: unable to fecth data")
         db.close()

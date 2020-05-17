@@ -6,7 +6,6 @@ from models import User
 import threading
 
 LOGIN_USER_USERNAME = ''
-SOCK_LOGIN = ''
 
 #POCETNA FORMA
 def FormStart():
@@ -92,11 +91,10 @@ def LoginToStart(root):
 #Slanje podataka za prijavljivanje
 def LoginSubmit(username, password,root):
     global LOGIN_USER_USERNAME
-    global SOCK_LOGIN
     if username == "" or password == "":
         messagebox.showwarning("Greska pri unosu", "Sva polja moraju biti popunjena!")
     else:
-        result, SOCK_LOGIN = ClientManager.ClientLogin(username,password)
+        result = ClientManager.ClientLogin(username,password)
         if result == "Error":
             messagebox.showwarning("Prijava", "Uneseni podaci nisu ispravni!")
         elif result == "Exist":
@@ -178,23 +176,28 @@ def RegisterToStart(root):
     root.destroy()
     FormStart()
 
-
+#Funkcija za otvaranje korisnicke forme
 def FormUser():
     root = tkinter.Tk()
     root.title("User Form")
     widthScreen = root.winfo_screenwidth()
     heightScreen = root.winfo_screenheight()
-    x = (widthScreen / 2) - 250
-    y = (heightScreen / 2) - 250
-    root.geometry('%dx%d+%d+%d' % (500, 500, x, y))
+    x = (widthScreen / 2) - 300
+    y = (heightScreen / 2) - 300
+    root.geometry('%dx%d+%d+%d' % (600, 600, x, y))
 
     user = ClientManager.ClientGetData(LOGIN_USER_USERNAME)
 
     lblUsername = Label(root, text="USER:" + user.firstname + " " + user.lastname, font=("Times", "15"))
-    lblUsername.pack(pady=20)
+    lblUsername.pack(anchor=W, pady=10, padx=10)
 
     btnLogout = Button(root,text="LOGOUT", command=lambda: LogoutUser(root))
-    btnLogout.pack()
+    btnLogout.pack(anchor=W, padx=10)
+
+    lbOnlineUsers = Listbox(root, selectmode=SINGLE, width=30,height=10)
+    lbOnlineUsers.pack(pady=20)
+
+    threading.Thread(target=ClientManager.GetOnlineClient,args=(lbOnlineUsers,)).start()
 
     root.protocol("WM_DELETE_WINDOW", lambda: FormUserClosing(root))
     root.mainloop()
@@ -207,8 +210,6 @@ def LogoutUser(root):
     if ClientManager.ClientLogout(LOGIN_USER_USERNAME):
         root.destroy()
         FormStart()
-
-
 
 
 FormStart()

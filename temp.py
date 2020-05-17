@@ -162,3 +162,12 @@
 #     def Close(self):
 #         self.root.destroy()
 
+# from functools import reduce
+#
+# test_list = list(('I', 'L', 'O', 'V', 'E', 'G', 'F', 'G'))
+# print(test_list)
+# test_list = [reduce(lambda i, j: i + ":" + j, test_list[0 : 4])]
+# print(test_list)
+
+
+
