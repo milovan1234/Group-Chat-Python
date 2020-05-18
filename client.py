@@ -224,21 +224,35 @@ def FormUser():
     lblMessages = Label(frameChat,text="Messages:")
     lblMessages.pack(anchor=W)
 
-    lbMessages = Listbox(frameChat, selectmode=NONE, width=50, height=17)
-    lbMessages.pack()
+    frameMessages = Frame(frameChat)
+    frameMessages.pack()
+    lbMessages = Listbox(frameMessages, selectmode=SINGLE, width=50, height=17)
+    lbMessages.pack(side=LEFT)
+    scrollbarMessages = Scrollbar(frameMessages, orient="vertical", command=lbMessages.yview)
+    scrollbarMessages.pack(side="right", fill="y")
+    lbMessages.config(yscrollcommand=scrollbarMessages.set)
+    ClientManager.GetAllMessages(lbMessages)
 
     frameSendMessage = Frame(frameChat)
     frameSendMessage.pack(fill=BOTH)
-    txtMessage = Entry(frameSendMessage, width=43)
+    txtMessage = Entry(frameSendMessage, width=46)
     txtMessage.pack(side=LEFT,ipady=3)
 
-    btnSendMessage = Button(frameSendMessage,text="send")
+    btnSendMessage = Button(frameSendMessage,text="send", command=lambda: SendMessage(LOGIN_USER_USERNAME,txtMessage))
     btnSendMessage.pack(ipady=1,padx=0)
 
-    threading.Thread(target=ClientManager.GetOnlineClient,args=(lbOnlineUsers,)).start()
+    threading.Thread(target=ClientManager.GetOnlineClientMessages,args=(lbOnlineUsers,lbMessages)).start()
 
     root.protocol("WM_DELETE_WINDOW", lambda: FormUserClosing(root))
     root.mainloop()
+
+def SendMessage(username,txtMessage):
+    if txtMessage.get() == '':
+        messagebox.showinfo("Poruka", "Niste uneli poruku za slanje!")
+    else:
+        ClientManager.SendMessageForAll(username,txtMessage.get())
+        txtMessage.delete(0, END)
+        txtMessage.insert(0, '')
 
 def FormUserClosing(root):
     if messagebox.askokcancel("Odjava", "Da li ste sigurni da zelite da se odjavite?"):

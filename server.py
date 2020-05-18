@@ -1,10 +1,13 @@
 import time
+import datetime
 import socket
 import threading
-from models import WorkDatabase
+from server_models import WorkDatabase
+from server_models import Message
+from server_models import WorkWithJson
 import os
 from functools import reduce
-
+import json
 
 clients = {}
 workDB = WorkDatabase()
@@ -110,6 +113,7 @@ def RequestHandling(conn,data):
         except:
             print("Error: unable to fecth data")
         db.close()
+        conn.close()
     elif request == "ALLUSERS":
         username = data
         db = workDB.Connect()
@@ -125,8 +129,29 @@ def RequestHandling(conn,data):
         except:
             print("Error: unable to fecth data")
         db.close()
-    print(clients.__len__())
-    print(clients)
+        conn.close()
+    elif request == "MESSAGEFORALL":
+        username,message = data.split(":")
+        db = workDB.Connect()
+        cursor = db.cursor()
+        query = 'SELECT * FROM User WHERE username="' + username + '"'
+        try:
+            cursor.execute(query)
+            result = cursor.fetchone()
+        except:
+            print("Error: unable to fecth data")
+        db.close()
+        WorkWithJson.WriteNew('json/messages.json',Message(result[1],result[2],result[3],datetime.datetime.now().strftime('%d.%m.%Y. %H:%M'),message))
+        for key in clients:
+            clients[key].send(str.encode("MESSAGEFORALL:-:" + str(datetime.datetime.now().strftime('%d.%m.%Y. %H:%M')) + " - " + result[1] + " " + result[2] + "(" + result[3] + "): " + message))
+        conn.send(str.encode("SUCCESS"))
+        conn.close()
+    elif request == "GETALLMESSAGE":
+        response = WorkWithJson.ReadAll('json/messages.json')
+        conn.send(str.encode(json.dumps(response)))
+
+    # print(clients.__len__())
+    # print(clients)
 
 
 HOST=''

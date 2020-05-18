@@ -1,6 +1,5 @@
 import socket
-import pymysql
-import threading
+import json
 
 HOST='127.0.0.1'
 PORT=1111
@@ -78,7 +77,15 @@ class ClientManager:
             lbAllUsers.insert(lbAllUsers.size(), user)
 
     @staticmethod
-    def GetOnlineClient(lbOnlineUsers):
+    def SendMessageForAll(username,message):
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.connect((HOST, PORT))
+        sock.send(str.encode("MESSAGEFORALL:-:" + username + ":" + message))
+        data = sock.recv(8096).decode()
+        sock.close()
+
+    @staticmethod
+    def GetOnlineClientMessages(lbOnlineUsers,lbMessages):
         while SOCK_LISTEN:
             global SOCK_LOGIN
             data = SOCK_LOGIN.recv(8096).decode()
@@ -97,23 +104,19 @@ class ClientManager:
                     for i in range(lbOnlineUsers.size()):
                         if lbOnlineUsers.get(i) == firstname + " " + lastname + " - " + username:
                             lbOnlineUsers.delete(i)
+                if request == "MESSAGEFORALL":
+                    lbMessages.insert(lbMessages.size(), response)
 
-
-
-class WorkDatabase:
-    __instance = None
     @staticmethod
-    def getInstance():
-        if WorkDatabase.__instance == None:
-            WorkDatabase()
-        return WorkDatabase.__instance
-    def __init__(self):
-        if WorkDatabase.__instance != None:
-            raise Exception("This class is a singleton!")
-        else:
-            WorkDatabase.__instance = self
-    def Connect(self):
-        return pymysql.connect(host="localhost", port=3306, user="root", password="", db="group-chat")
+    def GetAllMessages(lbMessages):
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.connect((HOST, PORT))
+        sock.send(str.encode("GETALLMESSAGE:-:ALL"))
+        data = json.loads(sock.recv(8096).decode())
+        for message in data:
+            lbMessages.insert(lbMessages.size(),str(message["dateAndTime"]) + " - " +message["firstname"] + " " + message["lastname"] + "("
+                              + message["username"] + "): " + message["message"])
+        sock.close()
 
 
 
@@ -126,5 +129,7 @@ class User:
         self.password = password
     def __str__(self):
         return str(self.id) + ":" + self.firstname + ":" + self.lastname + ":" + self.username + ":" + self.password
+
+
 
 

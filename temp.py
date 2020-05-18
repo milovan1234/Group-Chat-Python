@@ -195,3 +195,91 @@
 
 
 
+# import json
+# class User:
+#     staticni_podatak="podatak klase"
+#     def __init__(self, name, surname):
+#         self.name = name
+#         self.surname = surname
+#     def to_json(self):
+#         return json.dumps(self.__dict__)
+#     def __str__(self):
+#         return self.name+" "+self.surname
+#     @classmethod
+#     def from_json(cls, json_str):
+#         json_dict = json.loads(json_str)
+#         print(json_dict)
+#         return cls(**json_dict)
+#     @staticmethod
+#     def f(arg):
+#         print(User.staticni_podatak+arg); #moze i ovo ali je vise za g.fun
+#         return
+#
+# dictUser = User("Elvis", "Presley").to_json()
+# # print(dictUser)
+# fp = open('jsonpodaci.txt', 'w')
+# json.dump(dictUser, fp)
+# fp.close()
+# objUser = User.from_json(dictUser)
+# # print(objUser)
+# fp = open('jsonpodaci.txt', 'r')
+# # print(User.from_json(json.load(fp)))
+# fp.close()
+
+
+
+
+import json
+
+person_dict = [{"name": "Bob",
+"languages": ["English", "Fench"],
+"married": True,
+"age": 32
+}]
+
+with open('person.json', 'w') as json_file:
+  json.dump(person_dict, json_file)
+
+
+with open('person.json') as f:
+  data = json.load(f)
+
+# Output: {'name': 'Bob', 'languages': ['English', 'Fench']}
+person_dict.append({"name": "Bob",
+"languages": ["English", "Fench"],
+"married": True,
+"age": 33
+})
+
+with open('person.json', 'w') as json_file:
+  json.dump(person_dict, json_file)
+
+
+
+
+# # msg = Message(datetime.datetime.now().strftime('%d.%m.%Y. %H:%M'),"Poruka")
+# # print(msg.to_json())
+#
+# if not os.path.exists("json/messages.json"):
+#     file = open("json/messages.json", "w")
+#     file.write('[]')
+#     file.flush()
+#     file.close()
+#
+# with open('json/messages.json','r') as f:
+#   data = list(json.load(f))
+#
+# print(data)
+# msg = Message(datetime.datetime.now().strftime('%d.%m.%Y. %H:%M'),"PorukaNova")
+# msg1 = Message(datetime.datetime.now().strftime('%d.%m.%Y. %H:%M'),"PorukaDruga")
+# data.append(json.loads(msg.to_json()))
+# data.append(json.loads(msg1.to_json()))
+#
+# print(data)
+#
+# with open('json/messages.json', 'w') as json_file:
+#   json.dump(data, json_file)
+
+
+
+
