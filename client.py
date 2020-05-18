@@ -10,6 +10,7 @@ LOGIN_USER_USERNAME = ''
 #POCETNA FORMA
 def FormStart():
     root = tkinter.Tk()
+    root.configure(background="#343a40")
     root.title("Start Form")
     widthScreen = root.winfo_screenwidth()
     heightScreen = root.winfo_screenheight()
@@ -18,17 +19,18 @@ def FormStart():
     root.geometry('%dx%d+%d+%d' % (300, 300, x, y))
 
     frameLogReg = Frame(root)
+    frameLogReg.configure(background="#343a40")
     frameLogReg.place(in_=root, anchor="c", relx=0.5, rely=0.5)
 
-    lblTitle = Label(frameLogReg, text="Group Chat Application", font=("Times", "17"))
+    lblTitle = Label(frameLogReg, text="Group Chat Application", font=("Times", "17"), fg="#1a8cff", bg="#343a40")
     lblTitle.pack(pady=20)
 
     # dugme za otvaranje login forme
-    btnOpenLogin = Button(frameLogReg, text="LOGIN", command=lambda: OpenLogin(root))
+    btnOpenLogin = Button(frameLogReg, text="LOGIN", command=lambda: OpenLogin(root), width=10)
     btnOpenLogin.pack(pady=5)
 
     # dugme za otvaranje register forme
-    btnOpenRegister = Button(frameLogReg, text="REGISTER", command=lambda: OpenRegister(root))
+    btnOpenRegister = Button(frameLogReg, text="REGISTER", command=lambda: OpenRegister(root),width=10)
     btnOpenRegister.pack(pady=5)
 
     root.mainloop()
@@ -49,6 +51,7 @@ def OpenRegister(root):
 def FormLogin():
     root = tkinter.Tk()
     root.title("Login Form")
+    root.configure(background="#343a40")
     # centriranje forme na sredini ekrana
     widthScreen = root.winfo_screenwidth()
     heightScreen = root.winfo_screenheight()
@@ -58,28 +61,31 @@ def FormLogin():
 
     frameLogin = Frame(root)
     frameLogin.place(in_=root, anchor="c", relx=0.5, rely=0.5)
+    frameLogin.configure(background="#343a40")
 
-    lblLoginTitle = Label(frameLogin, text="Login", font=("Times", "15"))
+    lblLoginTitle = Label(frameLogin, text="Login", font=("Times", "16"), fg="#1a8cff", bg="#343a40")
     lblLoginTitle.pack(pady=15)
 
     frameUsername = Frame(frameLogin)
     frameUsername.pack(pady=5)
-    lblUsername = Label(frameUsername, text="Username: ")
+    frameUsername.configure(background="#343a40")
+    lblUsername = Label(frameUsername, text="Username: ", fg="white",bg="#343a40", font=("Arial", "10"))
     lblUsername.pack(side=LEFT)
-    txtUsername = Entry(frameUsername)
+    txtUsername = Entry(frameUsername, font=("Arial", "10"))
     txtUsername.pack()
 
     framePassword = Frame(frameLogin)
     framePassword.pack(pady=5)
-    lblPassword = Label(framePassword, text="Password: ")
+    framePassword.configure(background="#343a40")
+    lblPassword = Label(framePassword, text="Password: ", fg="white",bg="#343a40", font=("Arial", "10"))
     lblPassword.pack(side=LEFT)
-    txtPassword = Entry(framePassword, show="•")
+    txtPassword = Entry(framePassword, show="•", font=("Arial", "10"))
     txtPassword.pack()
 
-    btnLoginSubmit = Button(frameLogin, text="LOGIN", command=lambda: LoginSubmit(txtUsername.get(), txtPassword.get(), root))
-    btnLoginSubmit.pack(anchor=W, pady=10)
+    btnLoginSubmit = Button(frameLogin, text="LOGIN", command=lambda: LoginSubmit(txtUsername.get(), txtPassword.get(), root), width=12)
+    btnLoginSubmit.pack(anchor=W, pady=15)
 
-    btnBackToStart = Button(frameLogin, text="START FROM", command=lambda: LoginToStart(root))
+    btnBackToStart = Button(frameLogin, text="START FROM", command=lambda: LoginToStart(root), width=12)
     btnBackToStart.pack(anchor=W)
     root.mainloop()
 
@@ -112,51 +118,57 @@ def LoginToUser(root):
 def FormRegister():
     root = tkinter.Tk()
     root.title("Register Form")
+    root.configure(background="#343a40")
     widthScreen = root.winfo_screenwidth()
     heightScreen = root.winfo_screenheight()
-    x = (widthScreen / 2) - 150
-    y = (heightScreen / 2) - 150
-    root.geometry('%dx%d+%d+%d' % (300, 300, x, y))
+    x = (widthScreen / 2) - 170
+    y = (heightScreen / 2) - 170
+    root.geometry('%dx%d+%d+%d' % (340, 340, x, y))
 
     frameRegister = Frame(root)
     frameRegister.place(in_=root, anchor="c", relx=0.5, rely=0.5)
+    frameRegister.configure(background="#343a40")
 
-    lblRegisterTitle = Label(frameRegister, text="Register", font=("Times", "15"))
+    lblRegisterTitle = Label(frameRegister, text="Register", font=("Times", "16"), fg="#1a8cff", bg="#343a40")
     lblRegisterTitle.pack(pady=15)
 
     frameFirstname = Frame(frameRegister)
     frameFirstname.pack(pady=5)
-    lblFirstname = Label(frameFirstname, text="First name: ")
+    frameRegister.configure(background="#343a40")
+    lblFirstname = Label(frameFirstname, text="First name: ", fg="white", bg="#343a40", font=("Arial", "10"))
     lblFirstname.pack(side=LEFT)
-    txtFirstname = Entry(frameFirstname)
+    txtFirstname = Entry(frameFirstname, font=("Arial", "10"))
     txtFirstname.pack()
 
     frameLastname = Frame(frameRegister)
     frameLastname.pack(pady=5)
-    lblLastname = Label(frameLastname, text="Last name: ")
+    frameRegister.configure(background="#343a40")
+    lblLastname = Label(frameLastname, text="Last name: ", fg="white", bg="#343a40", font=("Arial", "10"))
     lblLastname.pack(side=LEFT)
-    txtLastname = Entry(frameLastname)
+    txtLastname = Entry(frameLastname, font=("Arial", "10"))
     txtLastname.pack()
 
     frameUsername = Frame(frameRegister)
     frameUsername.pack(pady=5)
-    lblUsername = Label(frameUsername, text="Username: ")
+    frameRegister.configure(background="#343a40")
+    lblUsername = Label(frameUsername, text="Username: ", fg="white",bg="#343a40", font=("Arial", "10"))
     lblUsername.pack(side=LEFT)
-    txtUsername = Entry(frameUsername)
+    txtUsername = Entry(frameUsername, font=("Arial", "10"))
     txtUsername.pack()
 
     framePassword = Frame(frameRegister)
     framePassword.pack(pady=5)
-    lblPassword = Label(framePassword, text="Password: ")
+    frameRegister.configure(background="#343a40")
+    lblPassword = Label(framePassword, text="Password: ", fg="white",bg="#343a40", font=("Arial", "10"))
     lblPassword.pack(side=LEFT)
-    txtPassword = Entry(framePassword, show="•")
+    txtPassword = Entry(framePassword, show="•", font=("Arial", "10"))
     txtPassword.pack()
 
     btnRegisterSubmit = Button(frameRegister, text="REGISTER", command=lambda: RegisterSubmit(txtFirstname.get(),txtLastname.get(),
-                                                                                              txtUsername.get(),txtPassword.get()))
-    btnRegisterSubmit.pack(anchor=W, pady=10)
+                                                                                              txtUsername.get(),txtPassword.get()), width=12)
+    btnRegisterSubmit.pack(anchor=W, pady=15)
 
-    btnBackToStart = Button(frameRegister, text="START FROM", command=lambda: RegisterToStart(root))
+    btnBackToStart = Button(frameRegister, text="START FROM", command=lambda: RegisterToStart(root),width=12)
     btnBackToStart.pack(anchor=W)
 
     root.mainloop()
@@ -180,28 +192,32 @@ def RegisterToStart(root):
 def FormUser():
     root = tkinter.Tk()
     root.title("User Form")
+    root.configure(background="#343a40")
     widthScreen = root.winfo_screenwidth()
     heightScreen = root.winfo_screenheight()
-    x = (widthScreen / 2) - 300
-    y = (heightScreen / 2) - 300
-    root.geometry('%dx%d+%d+%d' % (600, 600, x, y))
+    x = (widthScreen / 2) - 310
+    y = (heightScreen / 2) - 310
+    root.geometry('%dx%d+%d+%d' % (620, 620, x, y))
 
     user = ClientManager.ClientGetData(LOGIN_USER_USERNAME)
 
-    lblUsername = Label(root, text="USER: " + user.firstname + " " + user.lastname, font=("Times", "15"))
+    lblUsername = Label(root, text="USER: " + user.firstname + " " + user.lastname, font=("Times", "15"),bg="#343a40",fg="#1a8cff")
     lblUsername.pack(anchor=W, pady=10, padx=20)
 
-    btnLogout = Button(root,text="LOGOUT", command=lambda: LogoutUser(root))
+    btnLogout = Button(root,text="LOGOUT", command=lambda: LogoutUser(root),width=12)
     btnLogout.pack(anchor=W, padx=20)
 
     frameUsers = Frame(root)
     frameUsers.pack(pady=10,padx=20, fill=BOTH)
+    frameUsers.configure(background="#343a40")
 
     frameOnlineUsers = Frame(frameUsers)
     frameOnlineUsers.pack(anchor=W, side=LEFT)
-    lblOnlineUsers = Label(frameOnlineUsers, text="Online users:")
+    frameOnlineUsers.configure(background="#343a40")
+    lblOnlineUsers = Label(frameOnlineUsers, text="Online users:", font=("Arial", "11"), fg="#28a745", bg="#343a40")
     lblOnlineUsers.pack(anchor=W)
-    lbOnlineUsers = Listbox(frameOnlineUsers, selectmode=SINGLE, width=35,height=7)
+
+    lbOnlineUsers = Listbox(frameOnlineUsers, selectmode=SINGLE, width=35,height=7,bg="#f8f9fa",font=("Arial", "10"))
     lbOnlineUsers.pack(side=LEFT)
     scrollbarOnline = Scrollbar(frameOnlineUsers, orient="vertical", command=lbOnlineUsers.yview)
     scrollbarOnline.pack(side="right", fill="y")
@@ -209,9 +225,11 @@ def FormUser():
 
     frameAllUsers = Frame(frameUsers)
     frameAllUsers.pack(anchor=E)
-    lblAllUsers = Label(frameAllUsers, text="All users:")
+    frameAllUsers.configure(background="#343a40")
+    lblAllUsers = Label(frameAllUsers, text="All users:",font=("Arial", "11"), fg="#dc3545", bg="#343a40")
     lblAllUsers.pack(anchor=W)
-    lbAllUsers = Listbox(frameAllUsers, selectmode=SINGLE, width=35, height=7)
+
+    lbAllUsers = Listbox(frameAllUsers, selectmode=SINGLE, width=35, height=7,bg="#f8f9fa",font=("Arial", "10"))
     lbAllUsers.pack(side=LEFT)
     ClientManager.GetAllUsers(LOGIN_USER_USERNAME,lbAllUsers)
     scrollbarAll = Scrollbar(frameAllUsers, orient="vertical", command=lbAllUsers.yview)
@@ -220,13 +238,16 @@ def FormUser():
 
     frameChat = Frame(root)
     frameChat.pack(pady=10)
+    frameChat.configure(background="#343a40")
 
-    lblMessages = Label(frameChat,text="Messages:")
+    lblMessages = Label(frameChat,text="Messages:", font=("Arial", "11"),bg="#343a40",fg="white")
     lblMessages.pack(anchor=W)
 
     frameMessages = Frame(frameChat)
     frameMessages.pack()
-    lbMessages = Listbox(frameMessages, selectmode=SINGLE, width=50, height=17)
+    frameMessages.configure(background="#343a40")
+
+    lbMessages = Listbox(frameMessages, selectmode=SINGLE, width=50, height=17,bg="#f8f9fa",font=("Arial", "10"))
     lbMessages.pack(side=LEFT)
     scrollbarMessages = Scrollbar(frameMessages, orient="vertical", command=lbMessages.yview)
     scrollbarMessages.pack(side="right", fill="y")
@@ -235,10 +256,11 @@ def FormUser():
 
     frameSendMessage = Frame(frameChat)
     frameSendMessage.pack(fill=BOTH)
-    txtMessage = Entry(frameSendMessage, width=46)
+    frameSendMessage.configure(background="#343a40")
+    txtMessage = Entry(frameSendMessage, width=47,font=("Arial", "10"),bg="#f8f9fa")
     txtMessage.pack(side=LEFT,ipady=3)
 
-    btnSendMessage = Button(frameSendMessage,text="send", command=lambda: SendMessage(LOGIN_USER_USERNAME,txtMessage))
+    btnSendMessage = Button(frameSendMessage,text="send", command=lambda: SendMessage(LOGIN_USER_USERNAME,txtMessage),font=("Arial", "10"))
     btnSendMessage.pack(ipady=1,padx=0)
 
     threading.Thread(target=ClientManager.GetOnlineClientMessages,args=(lbOnlineUsers,lbMessages)).start()

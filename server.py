@@ -2,26 +2,19 @@ import time
 import datetime
 import socket
 import threading
-from server_models import WorkDatabase
-from server_models import Message
-from server_models import WorkWithJson
-import os
+from server_models import *
 from functools import reduce
 import json
 
 clients = {}
 workDB = WorkDatabase()
 
+#funkcija za obradu zahteva na serveru
 def RequestHandling(conn,data):
     global clients
-    global db
     request,data = data.split(":-:")
     if request == "LOGIN":
         username,password = data.split(":")
-        if not os.path.exists("logs/login_log.txt"):
-            file=open("logs/login_log.txt","w")
-            file.flush()
-            file.close()
         db = workDB.Connect()
         cursor = db.cursor()
         query = 'SELECT * FROM User'
@@ -32,18 +25,12 @@ def RequestHandling(conn,data):
             print("Error: unable to fecth data")
         db.close()
         if username in clients.keys():
-            file = open("logs/login_log.txt", "a")
-            file.write("Username: " + username + ":-:Date and time: " + str(time.ctime(time.time())) + ":-:Response: User already connect\n")
-            file.flush()
-            file.close()
+            WorkWithFile.WriteAppend("logs/login_log.txt", "Username: " + username + ":-:Date and time: " + str(time.ctime(time.time())) + ":-:Response: User already connect\n")
             conn.send(str.encode("LOGIN:-:EXIST"))
             conn.close()
         elif list(filter(lambda x: x[3] == username and x[4] == password, result)).__len__() == 1:
             clients[username] = conn
-            file = open("logs/login_log.txt", "a")
-            file.write("Username: " + username + ":-:Date and time: " + str(time.ctime(time.time())) + ":-:Response: Success connect\n")
-            file.flush()
-            file.close()
+            WorkWithFile.WriteAppend("logs/login_log.txt","Username: " + username + ":-:Date and time: " + str(time.ctime(time.time())) + ":-:Response: Success connect\n")
             onlineUsers = ''
             newonline = ''
             for res in result:
@@ -57,10 +44,7 @@ def RequestHandling(conn,data):
                 if key != username:
                     clients[key].send(str.encode("NEWONLINE:-:" + newonline))
         else:
-            file = open("logs/login_log.txt", "a")
-            file.write("Username: " + username + ":-:Date and time: " + str(time.ctime(time.time())) + ":-:Response: Error connect\n")
-            file.flush()
-            file.close()
+            WorkWithFile.WriteAppend("logs/login_log.txt","Username: " + username + ":-:Date and time: " + str(time.ctime(time.time())) + ":-:Response: Error connect\n")
             conn.send(str.encode("LOGIN:-:ERROR"))
             conn.close()
     elif request == "REGISTER":

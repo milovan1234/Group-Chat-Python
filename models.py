@@ -7,6 +7,7 @@ SOCK_LOGIN=''
 SOCK_LISTEN = False
 
 class ClientManager:
+    #Staticka metoda za slanje podataka o korisnickom imenu i lozinki pri prijavljivanju
     @staticmethod
     def ClientLogin(username,password):
         global SOCK_LOGIN,SOCK_LISTEN
@@ -15,16 +16,20 @@ class ClientManager:
         SOCK_LOGIN.send(str.encode("LOGIN:-:" + username + ":" + password))
         data = SOCK_LOGIN.recv(8096).decode()
         request,response = data.split(":-:")
+        #Uspesna prijava
         if response == "SUCCESS":
             SOCK_LISTEN = True
             return username
+        #Korisnik je vec prijavljen
         elif response == "EXIST":
             SOCK_LOGIN.close()
             return "Exist"
+        #Greska pri unosu podataka
         elif response == "ERROR":
             SOCK_LOGIN.close()
             return "Error"
 
+    #Staticka metoda za registraciju novih korisnika
     @staticmethod
     def ClientRegister(firstname,lastname,username,password):
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -33,11 +38,14 @@ class ClientManager:
         data = sock.recv(8096).decode()
         request, response = data.split(":-:")
         sock.close()
+        #Uspesna registracija
         if response == "SUCCESS":
             return True
+        #Korisnicko ime je zauzeto
         else:
             return False
 
+    #Staticka metoda za odjavljivanje korisnika
     @staticmethod
     def ClientLogout(username):
         global SOCK_LOGIN,SOCK_LISTEN
@@ -47,12 +55,15 @@ class ClientManager:
         data = sock.recv(8096).decode()
         request, response = data.split(":-:")
         sock.close()
+        #Uspesna odjava
         if response == "SUCCESS":
             SOCK_LISTEN = False
             return True
+        #U slucaju greske pri odjavljivanju
         else:
             return False
 
+    #Staticka metoda pre koje dobavljamo podatke za prijavljenog korisnika
     @staticmethod
     def ClientGetData(username):
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -64,6 +75,7 @@ class ClientManager:
         id,firstname,lastname,username,password=response.split(":")
         return User(id,firstname,lastname,username,password)
 
+    #Staticka metoda uz pomoc koje dohvatamo sve korisnike
     @staticmethod
     def GetAllUsers(username,lbAllUsers):
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -76,6 +88,7 @@ class ClientManager:
                                        x.split(":")[2] + " - " + x.split(":")[3], response.split(":*:"))):
             lbAllUsers.insert(lbAllUsers.size(), user)
 
+    #Staticka metoda kojom klijent salje poruku svim ostalim klijentima
     @staticmethod
     def SendMessageForAll(username,message):
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -84,6 +97,7 @@ class ClientManager:
         data = sock.recv(8096).decode()
         sock.close()
 
+    # Staticka metoda uz pomoc koje dohvatamo sve korisnike koji su trenutno prijavljeni
     @staticmethod
     def GetOnlineClientMessages(lbOnlineUsers,lbMessages):
         while SOCK_LISTEN:
@@ -107,6 +121,7 @@ class ClientManager:
                 if request == "MESSAGEFORALL":
                     lbMessages.insert(lbMessages.size(), response)
 
+    #Staticka metoda uz pomoc koje dohvatamo sve poruke kada se korisnik prijavi
     @staticmethod
     def GetAllMessages(lbMessages):
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -117,7 +132,6 @@ class ClientManager:
             lbMessages.insert(lbMessages.size(),str(message["dateAndTime"]) + " - " +message["firstname"] + " " + message["lastname"] + "("
                               + message["username"] + "): " + message["message"])
         sock.close()
-
 
 
 class User:

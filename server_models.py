@@ -49,6 +49,21 @@ class WorkWithJson:
             json.dump(data, json_file)
 
 
+class WorkWithFile:
+    @staticmethod
+    def WriteAppend(path, text):
+        if not os.path.exists(path):
+            file = open(path, "w")
+            file.write(text)
+            file.flush()
+            file.close()
+        else:
+            file = open(path, "a")
+            file.write(text)
+            file.flush()
+            file.close()
+
+
 
 
 

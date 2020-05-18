@@ -229,30 +229,30 @@
 
 
 
-import json
-
-person_dict = [{"name": "Bob",
-"languages": ["English", "Fench"],
-"married": True,
-"age": 32
-}]
-
-with open('person.json', 'w') as json_file:
-  json.dump(person_dict, json_file)
-
-
-with open('person.json') as f:
-  data = json.load(f)
-
-# Output: {'name': 'Bob', 'languages': ['English', 'Fench']}
-person_dict.append({"name": "Bob",
-"languages": ["English", "Fench"],
-"married": True,
-"age": 33
-})
-
-with open('person.json', 'w') as json_file:
-  json.dump(person_dict, json_file)
+# import json
+#
+# person_dict = [{"name": "Bob",
+# "languages": ["English", "Fench"],
+# "married": True,
+# "age": 32
+# }]
+#
+# with open('person.json', 'w') as json_file:
+#   json.dump(person_dict, json_file)
+#
+#
+# with open('person.json') as f:
+#   data = json.load(f)
+#
+# # Output: {'name': 'Bob', 'languages': ['English', 'Fench']}
+# person_dict.append({"name": "Bob",
+# "languages": ["English", "Fench"],
+# "married": True,
+# "age": 33
+# })
+#
+# with open('person.json', 'w') as json_file:
+#   json.dump(person_dict, json_file)
 
 
 
@@ -279,6 +279,7 @@ with open('person.json', 'w') as json_file:
 #
 # with open('json/messages.json', 'w') as json_file:
 #   json.dump(data, json_file)
+
 
 
 
