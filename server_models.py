@@ -3,6 +3,7 @@ import pymysql
 import datetime
 import os
 
+#Klasa za rad sa bazom
 class WorkDatabase:
     __instance = None
     @staticmethod
@@ -15,10 +16,12 @@ class WorkDatabase:
             raise Exception("This class is a singleton!")
         else:
             WorkDatabase.__instance = self
+    #Metoda koja vraca konekciju na pimysql bazu
     def Connect(self):
         return pymysql.connect(host="localhost", port=3306, user="root", password="", db="group-chat")
 
 
+#Klasa za obradu poruka
 class Message:
     def __init__(self,firstname,lastname,username,dateAndTime, message):
         self.firstname = firstname
@@ -29,12 +32,14 @@ class Message:
     def to_json(self):
         return json.dumps(self.__dict__)
 
-
+#Klasa za rad sa JSON fajlom
 class WorkWithJson:
+    #Staticka metoda za citanje svih podataka iz fajla i vracanje liste objekata
     @staticmethod
     def ReadAll(path):
         with open(path, 'r') as f:
             return list(json.load(f))
+    #Staticka metoda za upis novog objekta u JSON fajl
     @staticmethod
     def WriteNew(path,object):
         if not os.path.exists(path):
@@ -42,14 +47,14 @@ class WorkWithJson:
             file.write('[]')
             file.flush()
             file.close()
-        with open(path, 'r') as f:
-            data = list(json.load(f))
+        data = WorkWithJson.ReadAll(path)
         data.append(json.loads(object.to_json()))
         with open(path, 'w') as json_file:
             json.dump(data, json_file)
 
-
+#Klasa za rad sa tekstualnim fajlom
 class WorkWithFile:
+    #Staticka metoda za upisivanje novog reda u fajl, u mom slucaju sluzi kao log fajl prilikom prijavljvanja
     @staticmethod
     def WriteAppend(path, text):
         if not os.path.exists(path):

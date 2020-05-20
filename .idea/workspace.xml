@@ -25,10 +25,52 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../FP-Projekat" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="run.code.analysis.last.selected.profile" value="aDefault" />
   </component>
-  <component name="RunManager" selected="Python.client">
+  <component name="RunManager" selected="Python.client-2">
+    <configuration name="client-1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Projekat" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/client-1.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="client-2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Projekat" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/client-2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="client" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Projekat" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -92,55 +134,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="server_models" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Projekat" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/server_models.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="temp" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Projekat" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/temp.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.client-2" />
+        <item itemvalue="Python.client-1" />
         <item itemvalue="Python.client" />
         <item itemvalue="Python.server" />
         <item itemvalue="Python.forms" />
-        <item itemvalue="Python.temp" />
-        <item itemvalue="Python.server_models" />
       </list>
     </recent_temporary>
   </component>
@@ -174,38 +174,38 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="580" y="188" key="FileChooserDialogImpl/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1589840835193" />
-    <state width="1579" height="211" key="GridCell.Tab.0.bottom" timestamp="1589843232994">
+    <state width="1579" height="211" key="GridCell.Tab.0.bottom" timestamp="1589989832931">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1579" height="211" key="GridCell.Tab.0.bottom/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1589843232994" />
-    <state width="1579" height="211" key="GridCell.Tab.0.center" timestamp="1589843232994">
+    <state width="1579" height="211" key="GridCell.Tab.0.bottom/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1589989832931" />
+    <state width="1579" height="211" key="GridCell.Tab.0.center" timestamp="1589989832930">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1579" height="211" key="GridCell.Tab.0.center/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1589843232994" />
-    <state width="1579" height="211" key="GridCell.Tab.0.left" timestamp="1589843232994">
+    <state width="1579" height="211" key="GridCell.Tab.0.center/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1589989832930" />
+    <state width="1579" height="211" key="GridCell.Tab.0.left" timestamp="1589989832930">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1579" height="211" key="GridCell.Tab.0.left/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1589843232994" />
-    <state width="1579" height="211" key="GridCell.Tab.0.right" timestamp="1589843232994">
+    <state width="1579" height="211" key="GridCell.Tab.0.left/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1589989832930" />
+    <state width="1579" height="211" key="GridCell.Tab.0.right" timestamp="1589989832931">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1579" height="211" key="GridCell.Tab.0.right/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1589843232994" />
-    <state width="1579" height="276" key="GridCell.Tab.1.bottom" timestamp="1589795234805">
+    <state width="1579" height="211" key="GridCell.Tab.0.right/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1589989832931" />
+    <state width="1579" height="276" key="GridCell.Tab.1.bottom" timestamp="1589931288264">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1579" height="276" key="GridCell.Tab.1.bottom/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1589795234805" />
-    <state width="1579" height="276" key="GridCell.Tab.1.center" timestamp="1589795234805">
+    <state width="1579" height="276" key="GridCell.Tab.1.bottom/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1589931288264" />
+    <state width="1579" height="276" key="GridCell.Tab.1.center" timestamp="1589931288264">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1579" height="276" key="GridCell.Tab.1.center/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1589795234805" />
-    <state width="1579" height="276" key="GridCell.Tab.1.left" timestamp="1589795234789">
+    <state width="1579" height="276" key="GridCell.Tab.1.center/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1589931288264" />
+    <state width="1579" height="276" key="GridCell.Tab.1.left" timestamp="1589931288263">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1579" height="276" key="GridCell.Tab.1.left/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1589795234789" />
-    <state width="1579" height="276" key="GridCell.Tab.1.right" timestamp="1589795234805">
+    <state width="1579" height="276" key="GridCell.Tab.1.left/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1589931288263" />
+    <state width="1579" height="276" key="GridCell.Tab.1.right" timestamp="1589931288264">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1579" height="276" key="GridCell.Tab.1.right/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1589795234805" />
+    <state width="1579" height="276" key="GridCell.Tab.1.right/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1589931288264" />
     <state x="507" y="257" key="com.intellij.ide.util.TipDialog" timestamp="1589787204182">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
