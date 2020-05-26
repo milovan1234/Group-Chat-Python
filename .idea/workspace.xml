@@ -25,7 +25,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/FP_V9_Resenje" />
     <property name="run.code.analysis.last.selected.profile" value="aDefault" />
   </component>
   <component name="RunManager" selected="Python.client-2">
@@ -41,7 +41,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/client-1.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\Milovan Srejic\PycharmProjects\Projekat\client-1.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -71,7 +71,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="client" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="client-2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Projekat" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -83,7 +83,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/client.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\Milovan Srejic\PycharmProjects\Projekat\client-2.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -138,8 +138,8 @@
       <list>
         <item itemvalue="Python.client-2" />
         <item itemvalue="Python.client-1" />
-        <item itemvalue="Python.client" />
         <item itemvalue="Python.server" />
+        <item itemvalue="Python.client-2" />
         <item itemvalue="Python.forms" />
       </list>
     </recent_temporary>
@@ -158,10 +158,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="530" y="180" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1589807909115">
+    <state x="530" y="180" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1590517376763">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="530" y="180" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1589807909115" />
+    <state x="530" y="180" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1590517376763" />
     <state x="562" y="311" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1589792252821">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -170,26 +170,26 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="463" height="466" key="DebuggerActiveHint/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1589737790222" />
-    <state x="580" y="188" key="FileChooserDialogImpl" timestamp="1589840835193">
+    <state x="580" y="188" key="FileChooserDialogImpl" timestamp="1590231703466">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="580" y="188" key="FileChooserDialogImpl/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1589840835193" />
-    <state width="1579" height="211" key="GridCell.Tab.0.bottom" timestamp="1589989832931">
+    <state x="580" y="188" key="FileChooserDialogImpl/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1590231703466" />
+    <state width="1579" height="210" key="GridCell.Tab.0.bottom" timestamp="1590517635765">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1579" height="211" key="GridCell.Tab.0.bottom/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1589989832931" />
-    <state width="1579" height="211" key="GridCell.Tab.0.center" timestamp="1589989832930">
+    <state width="1579" height="210" key="GridCell.Tab.0.bottom/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1590517635765" />
+    <state width="1579" height="210" key="GridCell.Tab.0.center" timestamp="1590517635765">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1579" height="211" key="GridCell.Tab.0.center/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1589989832930" />
-    <state width="1579" height="211" key="GridCell.Tab.0.left" timestamp="1589989832930">
+    <state width="1579" height="210" key="GridCell.Tab.0.center/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1590517635765" />
+    <state width="1579" height="210" key="GridCell.Tab.0.left" timestamp="1590517635765">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1579" height="211" key="GridCell.Tab.0.left/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1589989832930" />
-    <state width="1579" height="211" key="GridCell.Tab.0.right" timestamp="1589989832931">
+    <state width="1579" height="210" key="GridCell.Tab.0.left/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1590517635765" />
+    <state width="1579" height="210" key="GridCell.Tab.0.right" timestamp="1590517635765">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1579" height="211" key="GridCell.Tab.0.right/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1589989832931" />
+    <state width="1579" height="210" key="GridCell.Tab.0.right/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1590517635765" />
     <state width="1579" height="276" key="GridCell.Tab.1.bottom" timestamp="1589931288264">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -206,10 +206,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="1579" height="276" key="GridCell.Tab.1.right/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1589931288264" />
-    <state x="507" y="257" key="com.intellij.ide.util.TipDialog" timestamp="1589787204182">
+    <state x="507" y="257" key="com.intellij.ide.util.TipDialog" timestamp="1590487924002">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="507" y="257" key="com.intellij.ide.util.TipDialog/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1589787204182" />
+    <state x="507" y="257" key="com.intellij.ide.util.TipDialog/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1590487924002" />
     <state x="463" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1589788293769">
       <screen x="0" y="0" width="1600" height="860" />
     </state>

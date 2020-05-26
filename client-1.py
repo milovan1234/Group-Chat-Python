@@ -1,11 +1,11 @@
 import tkinter
 from tkinter import *
 from tkinter import messagebox
-from models import ClientManager
-from models import User
+from client_models import ClientManager
+from client_models import User
 import threading
 
-LOGIN_USER_USERNAME = ''
+LOGIN_USER_USERNAME = None
 
 #POCETNA FORMA
 def FormStart():
@@ -238,10 +238,11 @@ def FormUser():
 
     lbAllUsers = Listbox(frameAllUsers, selectmode=SINGLE, width=35, height=7,bg="#f8f9fa",font=("Arial", "10"))
     lbAllUsers.pack(side=LEFT)
-    ClientManager.GetAllUsers(LOGIN_USER_USERNAME,lbAllUsers)
     scrollbarAll = Scrollbar(frameAllUsers, orient="vertical", command=lbAllUsers.yview)
     scrollbarAll.pack(side="right", fill="y")
     lbAllUsers.config(yscrollcommand=scrollbarAll.set)
+    # Poziv metode za prikazivanje svih korisnika u aplikaciji
+    ClientManager.GetAllUsers(LOGIN_USER_USERNAME, lbAllUsers)
 
     frameChat = Frame(root)
     frameChat.pack(pady=10)
@@ -301,5 +302,3 @@ def LogoutUser(root):
 
 
 FormStart()
-
-

@@ -5,19 +5,9 @@ import os
 
 #Klasa za rad sa bazom
 class WorkDatabase:
-    __instance = None
-    @staticmethod
-    def getInstance():
-        if WorkDatabase.__instance == None:
-            WorkDatabase()
-        return WorkDatabase.__instance
-    def __init__(self):
-        if WorkDatabase.__instance != None:
-            raise Exception("This class is a singleton!")
-        else:
-            WorkDatabase.__instance = self
     #Metoda koja vraca konekciju na pimysql bazu
-    def Connect(self):
+    @staticmethod
+    def Connect():
         return pymysql.connect(host="localhost", port=3306, user="root", password="", db="group-chat")
 
 
@@ -37,6 +27,11 @@ class WorkWithJson:
     #Staticka metoda za citanje svih podataka iz fajla i vracanje liste objekata
     @staticmethod
     def ReadAll(path):
+        if not os.path.exists(path):
+            file=open(path,"w")
+            file.write('[]')
+            file.flush()
+            file.close()
         with open(path, 'r') as f:
             return list(json.load(f))
     #Staticka metoda za upis novog objekta u JSON fajl
@@ -67,10 +62,3 @@ class WorkWithFile:
             file.write(text)
             file.flush()
             file.close()
-
-
-
-
-
-
-
